@@ -99,20 +99,16 @@ private void DeleteTheId(int a ){
         boolean canweRemove;
         GettingTheId();
 
-        try {
-            canweRemove = IdExistInOtherTable(table,identity,tables); // if it exists, then we can't
-            if(canweRemove){ // if we can then remove again
-                for (int i = 0; i < this.id.size(); i++) {
-                    if (this.id.get(i) == identity) {
-                        this.id.remove(i);
-                        DeleteTheId(identity);
-                        return true;
-                    }
+        canweRemove = IdExistInOtherTable(table,identity,tables); // if it exists, then we can't
+        if(canweRemove){ // if we can then remove again
+            for (int i = 0; i < this.id.size(); i++) {
+                if (this.id.get(i) == identity) {
+                    this.id.remove(i);
+                    DeleteTheId(identity);
+                    return true;
                 }
-                return false;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            return false;
         }
         return false;
     }
