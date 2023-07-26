@@ -59,6 +59,37 @@ private void DeleteTheId(int a ){
         }
     }
 
+    //This is to add Id to the list however before doing so we need to check
+    // if the id is already there
+    //This class will only be used when creating a Patient
+    public boolean addId(int id) {
+        GettingTheId();
+        boolean check;
+        if (this.id.size() == 0) {
+            SettingTheId(id);
+            return true;
+        }
+        check = checkifIdisthere(id);
+        if (!check) {
+            SettingTheId(id);
+            return true;
+        }
+        return false;
+    }
 
+    private boolean checkifIdisthere(int id) {
+        if (this.id.size() == 0) {
+            return false;
+        }
+        else {
+            for (Integer integer : this.id) {
+                if (integer == id) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+    }
 
 }
