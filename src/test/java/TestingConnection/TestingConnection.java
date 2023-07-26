@@ -1,6 +1,6 @@
 package TestingConnection;
 
-im
+
 import DbConnection.DataBaseConnection;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 ////junit.jupiter.execution.parallel.enabled = true
 ////     junit.jupiter.execution.parallel.config.strategy = dynamic
 
-public class TestingtheConnection {
+public class TestingConnection {
 
 
     @Test
