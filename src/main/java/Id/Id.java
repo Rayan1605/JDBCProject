@@ -13,7 +13,11 @@ public class Id {
     private final List<Integer> id = new ArrayList<>();
     Connection con = DataBaseConnection.CreateConnectionTouserdetails();
     Connection connection = DataBaseConnection.createConnectionToTeethTreatment();
-//This will be used to get the Id
+    //Constructor
+public Id() {
+
+}
+    //This will be used to get the Id
     //But first we clear it so that we can get the latest bunch of  ids
     private void  GettingTheId()  {
         id.clear();
@@ -54,6 +58,7 @@ private void DeleteTheId(int a ){
             e.printStackTrace();
         }
     }
+
 
 
 }
