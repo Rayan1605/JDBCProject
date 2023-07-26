@@ -1,5 +1,5 @@
 package DataBaseImplement;
 
-public class DatabaseInterface {
+public interface DatabaseInterface {
 
 }
