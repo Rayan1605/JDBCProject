@@ -31,7 +31,7 @@ public class TestingConnection {
         Connection connection = DataBaseConnection.createConnectionToTeethTreatment();
 
         assertNotNull(connection);// check if the connection is not null if it is null then
-        // it will fail but if it not then there is a connection
+        // it will fail, but if it not then there is a connection
     }
     @Test
     @DisplayName("Test to check if the connection is created to User Details -? this contain things" +
