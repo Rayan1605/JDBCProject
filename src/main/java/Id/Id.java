@@ -107,10 +107,23 @@ private void DeleteTheId(int a ){
         }
         return false;
     }
-
+//This is to check if the id exist in the other table
     private boolean IdExistInOtherTable(String table, int identity, String[] tables) {
+        // We check in a while loop to see if it has the same id if not then return false
 
+        for (String table1 : tables) {
+            if (!table1.equals(table)) {
+                String sqlQuery = "SELECT Id FROM " + table1 + " WHERE Id = ?";
+                PreparedStatement statement = connection.prepareStatement(sqlQuery);
+                statement.setInt(1, identity);
+                ResultSet ifId = statement.executeQuery();
+                if (ifId.next()) {
+                    return true;
+                }
+            }
 
+        }
+        return false;  // If we reach this point, it means the ID was not found in any table
     }
     //This is for the Update and checking to see if there is an id in the table
     public boolean DoesIdExistInTable(String table, int id) {
