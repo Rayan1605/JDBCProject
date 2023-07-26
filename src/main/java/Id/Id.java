@@ -42,7 +42,7 @@ private void DeleteTheId(int a ){
         e.printStackTrace();
     }
 }
-//This will be used to set the id
+//This will be used to enter the id into the database
     public void SettingTheId(int a ){
         String query="INSERT INTO theid VALUES (?)";
         try {
