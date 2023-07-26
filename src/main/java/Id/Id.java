@@ -98,7 +98,12 @@ private void DeleteTheId(int a ){
     public boolean removeIdfromList(String table,int identity,String [] tables) {
         boolean canweRemove;
         GettingTheId();
-        canweRemove = IdExistInOtherTable(table,identity,tables); // if it exists,
+        try {
+            canweRemove = IdExistInOtherTable(table,identity,tables); // if it exists,
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
         // then we can't
         if(canweRemove){ // if we can then remove again
             DeleteTheId(identity);
@@ -108,7 +113,7 @@ private void DeleteTheId(int a ){
         return false;
     }
 //This is to check if the id exist in the other table
-    private boolean IdExistInOtherTable(String table, int identity, String[] tables) {
+    private boolean IdExistInOtherTable(String table, int identity, String[] tables) throws SQLException {
         // We check in a while loop to see if it has the same id if not then return false
 
         for (String table1 : tables) {
