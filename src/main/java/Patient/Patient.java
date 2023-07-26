@@ -50,6 +50,22 @@ public class Patient {
         return address;
     }
 
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "ID=" + ID +
+                ", Firstname='" + Firstname + '\'' +
+                ", dateOfBirthday='" + dateOfBirthday + '\'' +
+                ", dateOfTreatment='" + dateOfTreatment + '\'' +
+                ", address='" + address + '\'' +
+                ", needspecialNeeds=" + needspecialNeeds +
+                ", typeOfTreatment='" + typeOfTreatment + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                ", email='" + email + '\'' +
+                ", LastName='" + LastName + '\'' +
+                '}';
+    }
+
     public void setAddress(String address) {
         this.address = address;
     }
