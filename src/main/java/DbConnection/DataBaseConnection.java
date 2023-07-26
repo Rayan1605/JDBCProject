@@ -24,7 +24,7 @@ public class DataBaseConnection {
         return connection;
     }
 
-    public static Connection CreatetoConnectionTouserdetails() {
+    public static Connection CreateConnectionTouserdetails() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver"); // getting the driver
             // creating the connection with the database
