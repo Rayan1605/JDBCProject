@@ -42,6 +42,18 @@ private void DeleteTheId(int a ){
         e.printStackTrace();
     }
 }
+//This will be used to set the id
+    public void SettingTheId(int a ){
+        String query="INSERT INTO theid VALUES (?)";
+        try {
+            PreparedStatement statement2 = con.prepareStatement(query);
+            statement2.setInt(1,a );
+            statement2.executeUpdate();
+
+        }  catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }
