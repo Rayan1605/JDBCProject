@@ -14,4 +14,83 @@ public class Patient {
     private String email;
     private String LastName;
 
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getFirstname() {
+        return Firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        Firstname = firstname;
+    }
+
+    public String getDateOfBirthday() {
+        return dateOfBirthday;
+    }
+
+    public void setDateOfBirthday(String dateOfBirthday) {
+        this.dateOfBirthday = dateOfBirthday;
+    }
+
+    public String getDateOfTreatment() {
+        return dateOfTreatment;
+    }
+
+    public void setDateOfTreatment(String dateOfTreatment) {
+        this.dateOfTreatment = dateOfTreatment;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public boolean isNeedspecialNeeds() {
+        return needspecialNeeds;
+    }
+
+    public void setNeedspecialNeeds(boolean needspecialNeeds) {
+        this.needspecialNeeds = needspecialNeeds;
+    }
+
+    public String getTypeOfTreatment() {
+        return typeOfTreatment;
+    }
+
+    public void setTypeOfTreatment(String typeOfTreatment) {
+        this.typeOfTreatment = typeOfTreatment;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getLastName() {
+        return LastName;
+    }
+
+    public void setLastName(String lastName) {
+        LastName = lastName;
+    }
 }
