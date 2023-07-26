@@ -119,7 +119,7 @@ private void DeleteTheId(int a ){
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setInt(1, id);
             ResultSet ifId = preparedStatement.executeQuery();
-            if (ifId.next()) {
+            if (ifId.next()) { //if there is an id then return true since the id is there
                 return true;
             } else {
                 return false;
