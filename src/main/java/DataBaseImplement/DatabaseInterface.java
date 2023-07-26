@@ -6,7 +6,7 @@ public interface DatabaseInterface {
     boolean createPatient(Patient patient, String DatabaseName); //Used to create
     void showAllPatient(String DatabaseName); // show all Patient
     void showPatientBasedonID(int id, String DatabaseName); // show patient on id
-    PatientClass ImportPatient(int id);//Import Patient from database
+    Patient ImportPatient(int id);//Import Patient from database
     //UPDATE
     boolean updatePatient (int id, String itemtoUpdate, String newValue, int index , String DatabaseName);
     //DELETE
