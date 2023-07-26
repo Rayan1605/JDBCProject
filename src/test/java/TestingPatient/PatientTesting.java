@@ -26,6 +26,15 @@ Patient patient = new Patient();
     @Test
     public void Get() {
 
+        assertEquals(1, patient.getID());
+        assertEquals("John", patient.getFirstname());
+        assertEquals("01/01/2000", patient.getDateOfBirthday());
+        assertEquals("01/01/2020", patient.getDateOfTreatment());
+        assertEquals("LeasNaCoille", patient.getAddress());
+        assertTrue(patient.NeedspecialNeeds());
+        assertEquals("Filling", patient.getTypeOfTreatment());
+
+
     }
 
 }

@@ -70,7 +70,7 @@ public class Patient {
         this.address = address;
     }
 
-    public boolean isNeedspecialNeeds() {
+    public boolean NeedspecialNeeds() {
         return needspecialNeeds;
     }
 
