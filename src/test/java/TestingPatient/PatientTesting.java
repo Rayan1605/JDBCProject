@@ -18,7 +18,7 @@ Patient patient = new Patient();
         patient.setDateOfBirthday("01/01/2000");
         patient.setDateOfTreatment("01/01/2020");
         patient.setAddress("LeasNaCoille");
-        patient.setSpecialNeeds(true);
+        patient.setNeedspecialNeeds(true);
         patient.setTypeOfTreatment("Filling");
     }
 }
