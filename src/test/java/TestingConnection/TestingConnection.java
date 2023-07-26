@@ -14,9 +14,9 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.*;
 //Test passed 100% so the connection is created successfully
 @Execution(ExecutionMode.CONCURRENT) // this is basically run multiple test at the same time
-//it does using multithreading so it will be faster
+//it does use multithreading, so it will be faster
 
-// // So to add Parallel Execution we need to  add a junit-platform-properties
+// // So to add Parallel Execution, we need to add a junit-platform-properties
 // (basically a file called that) in the Resources file
 ////and say this in the file
 ////junit.jupiter.execution.parallel.enabled = true
