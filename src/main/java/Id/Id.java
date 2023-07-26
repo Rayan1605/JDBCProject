@@ -112,6 +112,23 @@ private void DeleteTheId(int a ){
 
 
     }
+    //This is for the Update and checking to see if there is an id in the table
+    public boolean DoesIdExistInTable(String table, int id) {
+        String sqlQuery = "SELECT Id FROM " + table + " WHERE Id = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+            preparedStatement.setInt(1, id);
+            ResultSet ifId = preparedStatement.executeQuery();
+            if (ifId.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
 
 }
