@@ -90,6 +90,33 @@ private void DeleteTheId(int a ){
             return false;
         }
     }
+
+    public boolean removeIdfromList(String table,int identity,String [] tables) {
+        boolean canweRemove;
+        GettingTheId();
+
+        try {
+            canweRemove = IdExistInOtherTable(table,identity,tables); // if it exist then we can't
+            if(canweRemove){ // if we can then remove again we should try to implement binary searcu
+                for (int i = 0; i < this.id.size(); i++) {
+                    if (this.id.get(i) == identity) {
+                        this.id.remove(i);
+                        DeleteTheId(identity);
+                        return true;
+                    }
+                }
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
+
+    private boolean IdExistInOtherTable(String table, int identity, String[] tables) {
+
+
+    }
+}
 
 }
