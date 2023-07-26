@@ -98,17 +98,12 @@ private void DeleteTheId(int a ){
     public boolean removeIdfromList(String table,int identity,String [] tables) {
         boolean canweRemove;
         GettingTheId();
-
-        canweRemove = IdExistInOtherTable(table,identity,tables); // if it exists, then we can't
+        canweRemove = IdExistInOtherTable(table,identity,tables); // if it exists,
+        // then we can't
         if(canweRemove){ // if we can then remove again
-            for (int i = 0; i < this.id.size(); i++) {
-                if (this.id.get(i) == identity) {
-                    this.id.remove(i);
-                    DeleteTheId(identity);
-                    return true;
-                }
-            }
-            return false;
+            DeleteTheId(identity);
+            GettingTheId();
+            return true;
         }
         return false;
     }
