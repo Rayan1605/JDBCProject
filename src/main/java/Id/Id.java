@@ -101,8 +101,7 @@ private void DeleteTheId(int a ){
 
         try {
             canweRemove = IdExistInOtherTable(table,identity,tables); // if it exists, then we can't
-            if(canweRemove){ // if we can then remove again, we should try to implement
-                // binary search
+            if(canweRemove){ // if we can then remove again
                 for (int i = 0; i < this.id.size(); i++) {
                     if (this.id.get(i) == identity) {
                         this.id.remove(i);
