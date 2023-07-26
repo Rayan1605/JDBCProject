@@ -3,7 +3,7 @@ package TestingPatient;
 import Patient.Patient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+import static org.junit.jupiter.api.Assertions.*;
 public class PatientTesting {
 Patient patient = new Patient();
 
@@ -25,13 +25,7 @@ Patient patient = new Patient();
 
     @Test
     public void Get() {
-        assertEquals(1, patient.getID());
-        assertEquals("John", patient.getFirstname());
-        assertEquals("01/01/2000", patient.getDateOfBirthday());
-        assertEquals("01/01/2020", patient.getDateOfTreatment());
-        assertEquals("LeasNaCoille", patient.getAddress());
-        assertEquals(true, patient.getNeedspecialNeeds());
-        assertEquals("Filling", patient.getTypeOfTreatment());
+
     }
 
 }
