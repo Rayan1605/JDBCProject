@@ -37,7 +37,7 @@ public class TestingtheConnection {
     @DisplayName("Test to check if the connection is created to User Details -? this contain things" +
             "like the password and the id")
     public void testConnectionToUserDetails() throws SQLException {
-        Connection connection = DatabaseConnections.CreatetoConnectionTouserdetails();
+       Connection connection = DataBaseConnection.CreateConnectionTouserdetails();
         assertNotNull(connection);
     }
 
