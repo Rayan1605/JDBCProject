@@ -91,6 +91,10 @@ private void DeleteTheId(int a ){
         }
     }
 
+    //This is to remove the id from the list
+    //This class will only be used when deleting a Patient
+    //Then we need to see if it is in the other table
+    //If it is then we can't delete it
     public boolean removeIdfromList(String table,int identity,String [] tables) {
         boolean canweRemove;
         GettingTheId();
