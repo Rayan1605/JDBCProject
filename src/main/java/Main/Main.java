@@ -3,6 +3,7 @@ package Main;
 import DataBaseImplement.DatabaseCrudOperation;
 import DataBaseImplement.DatabaseInterface;
 import Id.Id;
+import Patient.Patient;
 
 import java.util.*;
 
@@ -41,6 +42,8 @@ public class Main {
         } while (!exitApplicaton) ;
 
     }
+
+
 
     private static int CrudOption() {
         System.out.println("The options are as follows\n");
@@ -192,6 +195,40 @@ public class Main {
             }
         }
         return count > 2;
+    }
+
+    private static void createPatient() {
+        Patient pat = new Patient();
+        System.out.println("Enter ID: ");
+        pat.setID(myInput.nextInt());
+        System.out.println("Enter First Name: ");
+        pat.setFirstname( myInput.next());
+        System.out.println("Enter Last Name: ");
+        pat.setLastName( myInput.next());
+        System.out.println("Enter email");
+        pat.setEmail( myInput.next());
+        System.out.println("Enter Phone Number: ");
+        pat.setPhoneNumber( myInput.nextInt());
+        System.out.println("Enter DOB: ");
+        pat.setDateOfBirthday( myInput.next());
+        System.out.println("Enter Treatment Date: ");
+        pat.setDateOfTreatment( myInput.next());
+        System.out.println("Enter Address: ");
+        pat.setAddress(myInput.next());
+        System.out.println("Is Special Needs?: true or false ");
+        pat.setNeedspecialNeeds(CheckIfItBoolean(myInput.next()));
+        System.out.println("Enter Treatment Type: ");
+        pat.setTypeOfTreatment( myInput.next());
+
+        boolean check = implement.createPatient(pat, DatabaseName);
+        if (check){
+            System.out.println("It been added Successfully\n");
+        }
+        else {
+            System.out.println("Therefore it has not been added Successfully\n");
+        }
+
+
     }
 
 
