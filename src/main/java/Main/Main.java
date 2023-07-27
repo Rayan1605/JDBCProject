@@ -43,6 +43,12 @@ public class Main {
 
     }
 
+    private static void showPatientById() {
+        System.out.println("Enter ID: ");
+        int id = myInput.nextInt();
+        implement.showPatientBasedonID(id, DatabaseName);
+    }
+
     private static void showAllPatient() {
         implement.showAllPatient(DatabaseName);
         DelayTimer(2000);
