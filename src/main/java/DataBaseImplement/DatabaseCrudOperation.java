@@ -169,8 +169,10 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
                         patient.setNeedspecialNeeds(result.getBoolean(7));
                         patient.setPhoneNumber(result.getInt(9));
                         patient.setEmail(result.getString(10));
-                        return GetRemainingDetail(patient); //since it not in the same department
-                        //We can assume that the date and type of treatment is not the same,
+                        return GetRemainingDetail(patient); //since it not in the same
+                        // department
+                        //We can assume that the date and type of treatment is not the
+                        // same,
                         // so we will ask the user to enter it
 
                         //And we will save it to the patient class and return it
