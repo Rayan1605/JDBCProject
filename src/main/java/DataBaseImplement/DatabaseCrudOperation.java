@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.Objects;
 import java.util.Scanner;
 
-//So we are going to extend ID which mean we can use the public method from Id,
+//So we are going to extend ID which mean we can use the public method from ID,
 //and we are going to implement the DatabaseInterface which mean we
 // have to use all the method
 //
