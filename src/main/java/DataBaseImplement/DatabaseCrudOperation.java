@@ -60,7 +60,7 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
         }
         return false;
     }
-
+//This method is used to show all the patient
     @Override
     public void showAllPatient(String DatabaseName) {
         con= DataBaseConnection.createConnectionToTeethTreatment();
