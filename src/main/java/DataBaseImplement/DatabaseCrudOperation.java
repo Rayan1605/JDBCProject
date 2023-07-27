@@ -75,7 +75,8 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
             Statement stm2 =con.createStatement();
             ResultSet result= stm2.executeQuery(query);
             while(result.next()){
-                System.out.format("%d\t%s\t%s\t%s\t%s\t%s\t%b\t%s\t%d\t%s\n\n", //match the format
+                ////match the format
+                System.out.format("%d\t%s\t%s\t%s\t%s\t%s\t%b\t%s\t%d\t%s\n\n",
                         result.getInt(1),
                         result.getString(2),
                         result.getString(3),
@@ -100,8 +101,10 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
 
     @Override
     public void showPatientBasedonID(int id, String DatabaseName) {
+        //printing it in this format
         System.out.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n",
-                "ID|", "FirstName","LastName|", "DateofBirth|", "DateofTreatment|", "Address|"
+                "ID|", "FirstName","LastName|", "DateofBirth|", "DateofTreatment|",
+                "Address|"
                 , "NeedsSpecialNeeds|", "TypeOfTreatment|", "PhoneNumber|", "Email|");
         System.out.println("------------------------------------------------------------------------------------------------------------------\n");
         con = DataBaseConnection.createConnectionToTeethTreatment();
