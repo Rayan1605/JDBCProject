@@ -273,7 +273,7 @@ public class Main {
         System.out.println("Enter the ID of the Patient you would like to change : ");
         int idToUpdate = myInput.nextInt();
         //Checking if the ID exists in the database and the method to check is in
-        // Id class
+        // ID class
         if (!id.DoesIdExistInTable(DatabaseName, idToUpdate)){
             //If the ID does not exist in the database, then it will ask to enter a valid ID
 
