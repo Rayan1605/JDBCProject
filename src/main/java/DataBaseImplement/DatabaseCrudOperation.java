@@ -238,7 +238,7 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
                     count= statement.executeUpdate();
 
             } else {
-                //If it is not a number or a boolean then it will be a string
+                //If it is not a number or a boolean, then it will be a string
                 statement.setString(1, newValue);
                 statement.setInt(2, id);
                 count =  statement.executeUpdate();
@@ -266,7 +266,7 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
                 System.out.println("Patient deleted!");
                 //We need to remove it from the list since it will be
                 // removed from the database,
-                //However, just like it explained in the id class
+                //However, just like it explained in the id class,
                 //we need to first see if this patient exists elsewhere
                 removeIdfromList(DatabaseName,id,TableNames);
             }
