@@ -109,6 +109,14 @@ public class Main {
 
     }
 
+    private static void DelayTimer(int num) {
+        try {
+            Thread.sleep(num);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
     private static String WritePassword() {
         System.out.println("Please enter the password you want to set\n");
         String password = myInput.next();
