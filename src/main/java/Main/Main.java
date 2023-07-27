@@ -5,6 +5,7 @@ import DataBaseImplement.DatabaseInterface;
 import Id.Id;
 
 import java.util.InputMismatchException;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -69,6 +70,46 @@ public class Main {
                 databasetoEnter(); // Recursion again if they enter an invalid number
             }
         }
+    }
+
+    private static void VerifyDetails() {
+        //If there is no password then it will ask to create a password
+        if (implement.GetPassword(DatabaseName).equals("")) {
+            System.out.println("You need to enter a password\n");
+            implement.SetPassword(WritePassword(), DatabaseName);
+            System.out.println("You have successfully Added a Password\n");
+            return;
+        }
+
+        System.out.println();
+        System.out.println("To access the " + DatabaseName +
+                " database, please enter the password \n");
+        System.out.println("Enter Here -> ");
+        String password = myInput.next();
+        //Checking the Password
+
+        if (Objects.equals(password, implement.GetPassword(DatabaseName))) {
+            System.out.println("\n");
+            System.out.println("You have successfully logged in the  " + DatabaseName + " database\n");
+        }
+        else {
+
+            //If typed wrong 3 more time then the application closes
+            if (count ==3) {
+                System.out.println("You have entered the wrong password 3 times");
+                System.out.println("Please try again later\n");
+                System.exit(0);
+            }
+            System.out.println("Wrong password entered");
+            System.out.println("Please try again -> You currently have \n" + (3 - count) + " more tries");
+            DelayTimer(2000);
+            count++;
+            VerifyDetails(); //using Recursion
+        }
+
+    }
+
+    private static String WritePassword() {
     }
 
 
