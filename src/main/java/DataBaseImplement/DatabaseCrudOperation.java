@@ -224,7 +224,8 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
                         return false;
                     }
                 }
-                statement.setInt(1, Integer.parseInt(newValue)); // so the first
+                // so the first
+                statement.setInt(1, Integer.parseInt(newValue));
                 // is the new value
                 statement.setInt(2, id);// second is the id
                 count =  statement.executeUpdate();
