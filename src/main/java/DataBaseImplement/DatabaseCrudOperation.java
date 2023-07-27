@@ -176,7 +176,8 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
                         //And we will save it to the patient class and return it
 
                     }else{
-                        System.out.println("The patient is not in the database"); //if the patient is not in the database
+                        // //if the patient is not in the database
+                        System.out.println("The patient is not in the database");
                     }
                 }catch (Exception e){
                     System.out.println("The patient is not in the database");
