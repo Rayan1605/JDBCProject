@@ -160,7 +160,8 @@ public class Main {
             }
 
             System.out.println("Wrong password entered");
-            System.out.println("Please try again -> You currently have \n" + (3 - count) + " more tries");
+            System.out.println("Please try again -> You currently have \n" + (3 - count)
+                    + " more tries");
             DelayTimer(2000);
             count++;
             VerifyDetails(); //using Recursion
