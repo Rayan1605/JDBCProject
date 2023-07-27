@@ -14,20 +14,21 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
     Connection con;
     @Override
     public boolean createPatient(Patient patient, String DatabaseName) {
-        if (!addId(patient.getID())) { // checking if we can add the id if another id exist ask them if they want to import it
+        if (!addId(patient.getID())) { // checking if we can add the id if
+            // another id exist, ask them if they want to import it
             int choice = 0;
             do {
                 System.out.println("The id is already there");
                 System.out.println("Do you wish to import it from the other table");
-                System.out.println("Press 1 for yes and 2 for no");
+                System.out.println("Press 1 for yes and 2 for no\n");
 
                 Scanner myinput = new Scanner(System.in);
-                System.out.println("Enter here -> ");
+                System.out.println("Enter here -> \n");
                 choice = myinput.nextInt();
                 if (choice == 1) {
                     patient = ImportPatient(patient.getID());
                 } else if (choice == 2) {
-                    System.out.println("Please try again later");
+                    System.out.println("Please try again later\n");
                     return false;
                 }
             } while (choice != 1);
