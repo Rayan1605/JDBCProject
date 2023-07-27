@@ -4,6 +4,7 @@ import DataBaseImplement.DatabaseCrudOperation;
 import DataBaseImplement.DatabaseInterface;
 import Id.Id;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -43,7 +44,30 @@ public class Main {
     }
 
     private static void databasetoEnter() {
-
+        int ch = 0;
+        // using Database create a password identification system
+        System.out.println("Which database do you want to enter\n");
+        System.out.println("1. Orthodontist Clinic\n");
+        System.out.println("2. Dental Department\n");
+        System.out.println("Please enter the number here -> ");
+        try {
+            ch = myInput.nextInt();
+        }catch (InputMismatchException e){
+            System.out.println("Please enter a valid number | 1 | 2\n");
+            System.out.println("1. Orthodontist Clinic\n");
+            System.out.println("2. Dental Department\n");
+            databasetoEnter();
+        }
+        switch (ch) {
+            case 1, 2 -> {
+                DatabaseName = tables[ch - 1];
+                VerifyDetails(); // checkingthePassword
+            }
+            default -> {
+                System.out.println("Please enter a valid number | 1 | 2\n");
+                databasetoEnter(); // Recursion
+            }
+        }
     }
 
 
