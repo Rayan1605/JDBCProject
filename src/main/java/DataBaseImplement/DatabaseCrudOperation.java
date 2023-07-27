@@ -133,7 +133,47 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
 
     @Override
     public Patient ImportPatient(int id) {
+        Scanner myinput = new Scanner(System.in);
+        System.out.println("Please enter the database name in which the patient is stored");
+        String[] tables = {"orthodontistclinic", "dentaldepartment"};
+        for (String names: tables) {
+            System.out.println("the names are " + names + "\n"); // printing the names of the tables
+        }
+        System.out.println("Enter here ->  \n");
+        String DatabaseName = myinput.next();
+        con = DataBaseConnection.createConnectionToTeethTreatment(); //creating the connection
+        for (String table: tables) {
+            if (table.equals(DatabaseName)) { // if they picked the option
+                try {
+
+                    String query = "SELECT * FROM " + DatabaseName + " where id = ?"; //selecting it from the database
+                    PreparedStatement statement = con.prepareStatement(query);
+                    statement.setInt(1, id);
+                    ResultSet result = statement.executeQuery();
+                    if (result.next()) {
+                        Patient patientClass = new Patient();
+                        patientClass.setID(result.getInt(1)); //inserting it into the patient class
+                        patientClass.setFirstname(result.getString(2));
+                        patientClass.setLastName(result.getString(3));
+                        patientClass.setDateOfBirthday(result.getString(4));
+                        patientClass.setAddress(result.getString(6));
+                        patientClass.setNeedspecialNeeds(result.getBoolean(7));
+                        patientClass.setPhoneNumber(result.getInt(9));
+                        patientClass.setEmail(result.getString(10));
+                        return GetRemainingDetail(patientClass);
+                    }else{
+                        System.out.println("The patient is not in the database");
+                    }
+                }catch (Exception e){
+                    System.out.println("The patient is not in the database");
+                }
+                break;
+            }
+        }
         return null;
+    }
+
+    private Patient GetRemainingDetail(Patient patientClass) {
     }
 
     @Override
