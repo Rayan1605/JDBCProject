@@ -56,7 +56,8 @@ public class Main {
             System.out.println("Please enter a valid number | 1 | 2\n");
             System.out.println("1. Orthodontist Clinic\n");
             System.out.println("2. Dental Department\n");
-            databasetoEnter();
+            databasetoEnter(); //Using Recursion to call the method again
+            // if they write an invalid number
         }
         switch (ch) {
             case 1, 2 -> {
@@ -65,7 +66,7 @@ public class Main {
             }
             default -> {
                 System.out.println("Please enter a valid number | 1 | 2\n");
-                databasetoEnter(); // Recursion
+                databasetoEnter(); // Recursion again if they enter an invalid number
             }
         }
     }
