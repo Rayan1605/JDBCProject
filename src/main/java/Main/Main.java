@@ -42,6 +42,39 @@ public class Main {
 
     }
 
+    private static int CrudOption() {
+        System.out.println("The options are as follows\n");
+        DelayTimer(300);
+        System.out.println();
+        System.out.println("1. Create Patient\n");
+        DelayTimer(600);
+        System.out.println("2. Show All Patient\n");
+        DelayTimer(600);
+        System.out.println("3. Show Patient by Id\n");
+        DelayTimer(600);
+        System.out.println("4. Update Patient\n");
+        DelayTimer(600);
+        System.out.println("5. Delete Patient\n");
+        DelayTimer(600);
+        System.out.println("6. Import Patient\n");
+        DelayTimer(600);
+        System.out.println("7. Change Database\n");
+        DelayTimer(600);
+        System.out.println("8. Exit Application \n");
+        DelayTimer(600);
+        System.out.println(" Please enter your choice below\n");
+        System.out.println("Enter Here -> ");
+        DelayTimer(600);
+        int CrudOption = myInput.nextInt();
+        if (CrudOption > 0 && CrudOption <= 7) {
+            return CrudOption;
+        } else {
+            System.out.println("Please enter a valid number | 1 | 2 | 3 | 4 | 5 | 6| 7 \n");
+            System.out.println("The options are as follows\n");
+            return CrudOption();
+        }
+    }
+
     private static void databasetoEnter() {
         int ch = 0;
         // using Database create a password identification system
