@@ -36,7 +36,7 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
                     return false;
                 }
             } while (choice != 1);
-            //If the  user does not exist, then we are going to create a new one
+            //If the user does not exist, then we are going to create a new one
             con= DataBaseConnection.createConnectionToTeethTreatment();
             String query="INSERT INTO " + DatabaseName + " VALUES (?,?,?,?,?,?,?,?,?,?)";//Then inserting it into the database
             try{
