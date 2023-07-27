@@ -73,7 +73,7 @@ public class Main {
     }
 
     private static void VerifyDetails() {
-        //If there is no password then it will ask to create a password
+        //If there is no password, then it will ask to create a password
         if (implement.GetPassword(DatabaseName).equals("")) {
             System.out.println("You need to enter a password\n");
             implement.SetPassword(WritePassword(), DatabaseName);
@@ -90,7 +90,8 @@ public class Main {
 
         if (Objects.equals(password, implement.GetPassword(DatabaseName))) {
             System.out.println("\n");
-            System.out.println("You have successfully logged in the  " + DatabaseName + " database\n");
+            System.out.println("You have successfully logged in the  "
+                    + DatabaseName + " database\n");
         }
         else {
 
