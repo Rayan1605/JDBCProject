@@ -304,5 +304,23 @@ public class Main {
 
     }
 
+    private static int WhichOptiontoUpdate(String[] updateOptions) {
+        System.out.println("Which of the options would you like to Update?\n");
+        int counter = 1;
+        for(String option : updateOptions){
+            System.out.println(counter + ". " +  option);
+            counter++;
+        }
+        System.out.println("Please Enter: ");
+        int input = myInput.nextInt();
+        if(input > 0 && input <= 7){
+            return input;
+        }
+        else{
+            System.out.println("Please enter a valid number | 1 | 2 | 3 | 4 | 5| 6 | 7 \n");
+            return WhichOptiontoUpdate(updateOptions);
+        }
+    }
+
 
 }
