@@ -62,7 +62,7 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
 
     @Override
     public void showAllPatient(String DatabaseName) {
-        con= DatabaseConnections.createConnectionToTeethTreatment();
+        con= DataBaseConnection.createConnectionToTeethTreatment();
         String query="SELECT * FROM " + DatabaseName; //getting everything
         System.out.println("Patient details: ");
 
