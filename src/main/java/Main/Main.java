@@ -43,6 +43,7 @@ public class Main {
 
     }
 
+
     private static void showPatientById() {
         System.out.println("Enter ID: ");
         int id = myInput.nextInt();
@@ -253,6 +254,54 @@ public class Main {
             CheckIfItBoolean(nextBoolean);
         }
         return false;
+    }
+
+    private static void updatePatient() {
+
+        System.out.println("Enter the ID of the Patient you would like to change : ");
+        int idToUpdate = myInput.nextInt();
+        if (!id.DoesIdExistInTable(DatabaseName, idToUpdate)){
+            System.out.println("The ID you have entered does not exist in the database");
+            System.out.println("Please enter a valid ID");
+            System.out.println("You have " + (3 - count) + " tries left");
+            updatePatient();
+        }
+        String[] updateOptions = {"DateofBirth", "DateofTreatment"
+                , "Address", "NeedSpecialNeeds", "TypeOfTreatment,", "PhoneNumber","Email", };
+        int updateOption = WhichOptiontoUpdate(updateOptions) - 1;
+        switch (updateOption) {
+            case 0 -> {
+                System.out.println("Enter DateOfBirth: ");
+                implement.updatePatient(idToUpdate, updateOptions[updateOption], myInput.next(), 4, DatabaseName);
+            }
+            case 1 -> {
+                System.out.println("Enter DateOfTreatment: ");
+                implement.updatePatient(idToUpdate, updateOptions[updateOption], myInput.next(), 5, DatabaseName);
+            }
+            case 2 -> {
+                System.out.println("Enter New Address: ");
+                implement.updatePatient(idToUpdate, updateOptions[updateOption], myInput.next(), 6, DatabaseName);
+            }
+            case 3 -> {
+                System.out.println("Enter  if you require NeedSpecialNeed: true or false: ");
+                implement.updatePatient(idToUpdate, updateOptions[updateOption], myInput.next(), 7, DatabaseName);
+            }
+            case 4 -> {
+                System.out.println("Enter  the TypeOfTreatment: ");
+                implement.updatePatient(idToUpdate, updateOptions[updateOption], myInput.next(), 8, DatabaseName);
+            }
+
+            case 5-> {
+                System.out.println("Enter new  PhoneNumber: ");
+                implement.updatePatient(idToUpdate, updateOptions[updateOption], myInput.next(), 9, DatabaseName);
+            }
+            case 6-> {
+                System.out.println("Enter  the Email: ");
+                implement.updatePatient(idToUpdate, updateOptions[updateOption], myInput.next(), 10, DatabaseName);
+            }
+            default -> System.out.println("ERROR!");
+        }
+
     }
 
 
