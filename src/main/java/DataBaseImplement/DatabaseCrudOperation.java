@@ -275,13 +275,37 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
         }
     }
 
+    //Just Getting the list of the tables
     @Override
     public String GetPassword(String databaseName) {
-        return null;
+        con = DataBaseConnection.CreateConnectionTouserdetails();
+        PreparedStatement statement;
+        try {
+            statement = con.prepareStatement("SELECT Password FROM " + databaseName);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                //It it found then it will return the password
+                return resultSet.getString("Password");
+            } else {
+                //If it is not found then it will return an empty string
+                return "";
+            }
+        } catch (SQLException e) {
+            return "";
+        }
     }
 
     @Override
+    //if the password is not found then it will create a new password
     public void SetPassword(String password, String databaseName) {
-
+        con = DataBaseConnection.CreateConnectionTouserdetails();
+        String query = "INSERT INTO " + databaseName + " (password) VALUES (?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1,password);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
