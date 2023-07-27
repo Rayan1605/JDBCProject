@@ -1,9 +1,11 @@
 package DataBaseImplement;
 
+import DbConnection.DataBaseConnection;
 import Id.Id;
 import Patient.Patient;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.Scanner;
 
 //So we are going to extend ID which mean we can use the public method from Id,
@@ -32,7 +34,28 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
                     return false;
                 }
             } while (choice != 1);
+            con= DataBaseConnection.createConnectionToTeethTreatment();
+            String query="INSERT INTO " + DatabaseName + " VALUES (?,?,?,?,?,?,?,?,?,?)";//Then inserting it into the database
+            try{
+                PreparedStatement pst=con.prepareStatement(query);
+                pst.setInt( 1, patient.getID());
+                pst.setString( 2, patient.getFirstname());
+                pst.setString( 3, patient.getLastName());
+                pst.setString( 4, patient.getDateOfBirthday());
+                pst.setString( 5, patient.getDateOfTreatment());
+                pst.setString( 6, patient.getAddress());
+                pst.setBoolean( 7, patient.NeedspecialNeeds());
+                pst.setString( 8, patient.getTypeOfTreatment());
+                pst.setInt( 9, patient.getPhoneNumber());
+                pst.setString( 10, patient.getEmail());
+                int cnt = pst.executeUpdate();
+                return cnt != 0;
+
+            }catch(Exception ex){
+                return false;
+            }
         }
+        return false;
     }
 
     @Override
