@@ -269,35 +269,44 @@ public class Main {
         String[] updateOptions = {"DateofBirth", "DateofTreatment"
                 , "Address", "NeedSpecialNeeds", "TypeOfTreatment,", "PhoneNumber","Email", };
         int updateOption = WhichOptiontoUpdate(updateOptions) - 1;
+        //Once we have the option we want to update,
+        //We will send it to the updatePatient method
         switch (updateOption) {
             case 0 -> {
                 System.out.println("Enter DateOfBirth: ");
-                implement.updatePatient(idToUpdate, updateOptions[updateOption], myInput.next(), 4, DatabaseName);
+                implement.updatePatient(idToUpdate, updateOptions[updateOption],
+                        myInput.next(), 4, DatabaseName);
             }
             case 1 -> {
                 System.out.println("Enter DateOfTreatment: ");
-                implement.updatePatient(idToUpdate, updateOptions[updateOption], myInput.next(), 5, DatabaseName);
+                implement.updatePatient(idToUpdate, updateOptions[updateOption],
+                        myInput.next(), 5, DatabaseName);
             }
             case 2 -> {
                 System.out.println("Enter New Address: ");
-                implement.updatePatient(idToUpdate, updateOptions[updateOption], myInput.next(), 6, DatabaseName);
+                implement.updatePatient(idToUpdate, updateOptions[updateOption],
+                        myInput.next(), 6, DatabaseName);
             }
             case 3 -> {
                 System.out.println("Enter  if you require NeedSpecialNeed: true or false: ");
-                implement.updatePatient(idToUpdate, updateOptions[updateOption], myInput.next(), 7, DatabaseName);
+                implement.updatePatient(idToUpdate, updateOptions[updateOption],
+                        myInput.next(), 7, DatabaseName);
             }
             case 4 -> {
                 System.out.println("Enter  the TypeOfTreatment: ");
-                implement.updatePatient(idToUpdate, updateOptions[updateOption], myInput.next(), 8, DatabaseName);
+                implement.updatePatient(idToUpdate, updateOptions[updateOption],
+                        myInput.next(), 8, DatabaseName);
             }
 
             case 5-> {
                 System.out.println("Enter new  PhoneNumber: ");
-                implement.updatePatient(idToUpdate, updateOptions[updateOption], myInput.next(), 9, DatabaseName);
+                implement.updatePatient(idToUpdate, updateOptions[updateOption],
+                        myInput.next(), 9, DatabaseName);
             }
             case 6-> {
                 System.out.println("Enter  the Email: ");
-                implement.updatePatient(idToUpdate, updateOptions[updateOption], myInput.next(), 10, DatabaseName);
+                implement.updatePatient(idToUpdate, updateOptions[updateOption],
+                        myInput.next(), 10, DatabaseName);
             }
             default -> System.out.println("ERROR!");
         }
