@@ -5,6 +5,7 @@ import Id.Id;
 import Patient.Patient;
 
 import java.sql.*;
+import java.util.Objects;
 import java.util.Scanner;
 
 //So we are going to extend ID which mean we can use the public method from Id,
@@ -137,16 +138,19 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
         System.out.println("Please enter the database name in which the patient is stored");
         String[] tables = {"orthodontistclinic", "dentaldepartment"};
         for (String names: tables) {
-            System.out.println("the names are " + names + "\n"); // printing the names of the tables
+            //// printing the names of the tables
+            System.out.println("the names are " + names + "\n");
         }
         System.out.println("Enter here ->  \n");
+        //getting the name of the database
         String DatabaseName = myinput.next();
-        con = DataBaseConnection.createConnectionToTeethTreatment(); //creating the connection
+        //creating the connection
+        con = DataBaseConnection.createConnectionToTeethTreatment();
         for (String table: tables) {
             if (table.equals(DatabaseName)) { // if they picked the option
                 try {
-
-                    String query = "SELECT * FROM " + DatabaseName + " where id = ?"; //selecting it from the database
+                    //selecting it from the database
+                    String query = "SELECT * FROM " + DatabaseName + " where id = ?";
                     PreparedStatement statement = con.prepareStatement(query);
                     statement.setInt(1, id);
                     ResultSet result = statement.executeQuery();
@@ -160,9 +164,14 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
                         patient.setNeedspecialNeeds(result.getBoolean(7));
                         patient.setPhoneNumber(result.getInt(9));
                         patient.setEmail(result.getString(10));
-                        return GetRemainingDetail(patient);
+                        return GetRemainingDetail(patient); //since it not in the same department
+                        //We can assume that the date and type of treatment is not the same,
+                        // so we will ask the user to enter it
+
+                        //And we will save it to the patient class and return it
+
                     }else{
-                        System.out.println("The patient is not in the database");
+                        System.out.println("The patient is not in the database"); //if the patient is not in the database
                     }
                 }catch (Exception e){
                     System.out.println("The patient is not in the database");
@@ -188,6 +197,51 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
 
     @Override
     public boolean updatePatient(int id, String itemtoUpdate, String newValue, int index, String DatabaseName) {
+        int count;
+        con = DataBaseConnection.createConnectionToTeethTreatment();
+        String query = "UPDATE " + DatabaseName + " SET " + itemtoUpdate + " = ? WHERE id = ?";
+        //So it will update the itemtoUpdate to the newValue where the id is the id
+        PreparedStatement statement;
+
+        try {
+            statement = con.prepareStatement(query);
+            if (Objects.equals(itemtoUpdate, "phonenumber")) {
+                for (Character c : newValue.toCharArray()) { // making sure the values are
+                    //Number using ascii table
+                    if (c < 48 || c > 57) {
+                        System.out.println("Please enter a number");
+                        return false;
+                    }
+                }
+                statement.setInt(1, Integer.parseInt(newValue)); // so the first is the new value
+                statement.setInt(2, id);// second is the id
+                count =  statement.executeUpdate();
+
+            } else if (Objects.equals(itemtoUpdate, "needspecialNeeds")) {
+                if (itemtoUpdate.equals("true") || itemtoUpdate.equals("false")) { //making sure it is true or false or else
+                    //it will close the application
+                    statement.setBoolean(1, Boolean.parseBoolean(newValue));//then convert to boolean
+                    statement.setInt(2, id);
+                    count= statement.executeUpdate();
+                } else {
+                    System.out.println("Please enter true or False");
+                    System.out.println("Application now closing");
+                    System.exit(0);
+                    return false;
+                }
+            } else {
+                statement.setString(1, newValue);
+                statement.setInt(2, id);
+                count =  statement.executeUpdate();
+            }
+            if (count > 0) {
+                System.out.println("Employee updated successfully");
+                return true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
