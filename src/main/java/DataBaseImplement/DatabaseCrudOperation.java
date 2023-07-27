@@ -4,6 +4,7 @@ import Id.Id;
 import Patient.Patient;
 
 import java.sql.Connection;
+import java.util.Scanner;
 
 //So we are going to extend ID which mean we can use the public method from Id,
 //and we are going to implement the DatabaseInterface which mean we
@@ -13,7 +14,24 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
     Connection con;
     @Override
     public boolean createPatient(Patient patient, String DatabaseName) {
+        if (!addId(patient.getID())) { // checking if we can add the id if another id exist ask them if they want to import it
+            int choice = 0;
+            do {
+                System.out.println("The id is already there");
+                System.out.println("Do you wish to import it from the other table");
+                System.out.println("Press 1 for yes and 2 for no");
 
+                Scanner myinput = new Scanner(System.in);
+                System.out.println("Enter here -> ");
+                choice = myinput.nextInt();
+                if (choice == 1) {
+                    patient = ImportPatient(patient.getID());
+                } else if (choice == 2) {
+                    System.out.println("Please try again later");
+                    return false;
+                }
+            } while (choice != 1);
+        }
     }
 
     @Override
