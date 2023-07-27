@@ -296,7 +296,7 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
     }
 
     @Override
-    //if the password is not found then it will create a new password
+    //if the password is not found, then it will create a new password
     public void SetPassword(String password, String databaseName) {
         con = DataBaseConnection.CreateConnectionTouserdetails();
         String query = "INSERT INTO " + databaseName + " (password) VALUES (?)";
