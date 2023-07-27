@@ -190,7 +190,8 @@ public class Main {
     //To check if the password is strong enough
     private static boolean CheckPasswordStrength(String Password) {
         int count = 0;
-        List<String> specialChar = Arrays.asList("!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "+");
+        List<String> specialChar = Arrays.asList("!", "@", "#", "$", "%", "^", "&",
+                "*", "(", ")", "-", "+");
         boolean[] checkList = new boolean[4];
         for (Character a : Password.toCharArray()) {
             if (Character.isUpperCase(a)) {
