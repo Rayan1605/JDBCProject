@@ -160,7 +160,8 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
                     ResultSet result = statement.executeQuery();
                     if (result.next()) {
                         Patient patient = new Patient();
-                        patient.setID(result.getInt(1)); //inserting it into the patient class
+                        //inserting it into the patient class
+                        patient.setID(result.getInt(1));
                         patient.setFirstname(result.getString(2));
                         patient.setLastName(result.getString(3));
                         patient.setDateOfBirthday(result.getString(4));
