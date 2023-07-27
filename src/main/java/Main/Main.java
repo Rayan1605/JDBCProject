@@ -43,6 +43,12 @@ public class Main {
 
     }
 
+    private static void deletePatient() {
+        System.out.println("Enter ID: ");
+        int id = myInput.nextInt();
+        implement.deletePatient(id, DatabaseName,tables);
+    }
+
 
     private static void showPatientById() {
         System.out.println("Enter ID: ");
