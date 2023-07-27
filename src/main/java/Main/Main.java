@@ -61,7 +61,7 @@ public class Main {
         switch (ch) {
             case 1, 2 -> {
                 DatabaseName = tables[ch - 1];
-                VerifyDetails(); // checkingthePassword
+                VerifyDetails(); // checking-thePassword
             }
             default -> {
                 System.out.println("Please enter a valid number | 1 | 2\n");
@@ -108,7 +108,7 @@ public class Main {
         }
 
     }
-
+//This will just delay the program for how long we decide to set it for
     private static void DelayTimer(int num) {
         try {
             Thread.sleep(num);
