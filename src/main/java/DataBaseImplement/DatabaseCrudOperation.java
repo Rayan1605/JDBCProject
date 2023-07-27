@@ -151,16 +151,16 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
                     statement.setInt(1, id);
                     ResultSet result = statement.executeQuery();
                     if (result.next()) {
-                        Patient patientClass = new Patient();
-                        patientClass.setID(result.getInt(1)); //inserting it into the patient class
-                        patientClass.setFirstname(result.getString(2));
-                        patientClass.setLastName(result.getString(3));
-                        patientClass.setDateOfBirthday(result.getString(4));
-                        patientClass.setAddress(result.getString(6));
-                        patientClass.setNeedspecialNeeds(result.getBoolean(7));
-                        patientClass.setPhoneNumber(result.getInt(9));
-                        patientClass.setEmail(result.getString(10));
-                        return GetRemainingDetail(patientClass);
+                        Patient patient = new Patient();
+                        patient.setID(result.getInt(1)); //inserting it into the patient class
+                        patient.setFirstname(result.getString(2));
+                        patient.setLastName(result.getString(3));
+                        patient.setDateOfBirthday(result.getString(4));
+                        patient.setAddress(result.getString(6));
+                        patient.setNeedspecialNeeds(result.getBoolean(7));
+                        patient.setPhoneNumber(result.getInt(9));
+                        patient.setEmail(result.getString(10));
+                        return GetRemainingDetail(patient);
                     }else{
                         System.out.println("The patient is not in the database");
                     }
