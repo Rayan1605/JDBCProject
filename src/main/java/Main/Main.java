@@ -43,6 +43,12 @@ public class Main {
 
     }
 
+    private static void importPatient() {
+        System.out.println("What the id of the person you wish to import");
+        Patient patient = implement.ImportPatient(myInput.nextInt());
+        implement.createPatient(patient,DatabaseName);
+    }
+
     private static void deletePatient() {
         System.out.println("Enter ID: ");
         int id = myInput.nextInt();
