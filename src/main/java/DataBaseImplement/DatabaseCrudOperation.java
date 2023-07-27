@@ -204,17 +204,20 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
     }
 
     @Override
-    public boolean updatePatient(int id, String itemtoUpdate, String newValue, int index, String DatabaseName) {
+    public boolean updatePatient(int id, String itemtoUpdate, String newValue,
+                                 int index, String DatabaseName) {
         int count;
         con = DataBaseConnection.createConnectionToTeethTreatment();
-        String query = "UPDATE " + DatabaseName + " SET " + itemtoUpdate + " = ? WHERE id = ?";
+        String query = "UPDATE " + DatabaseName + " SET " + itemtoUpdate +
+                " = ? WHERE id = ?";
         //So it will update the item to Update to the newValue where the id is the id
         PreparedStatement statement;
 
         try {
             statement = con.prepareStatement(query);
             if (Objects.equals(itemtoUpdate, "phonenumber")) {
-                for (Character c : newValue.toCharArray()) { // making sure the values are
+                //// making sure the values are
+                for (Character c : newValue.toCharArray()) {
                     //Number using ascii table
                     if (c < 48 || c > 57) {
                         System.out.println("Please enter a number");
