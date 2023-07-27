@@ -36,7 +36,8 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
             } while (choice != 1);
             //If the user does not exist, then we are going to create a new one
             con= DataBaseConnection.createConnectionToTeethTreatment();
-            String query="INSERT INTO " + DatabaseName + " VALUES (?,?,?,?,?,?,?,?,?,?)";//Then inserting it into the database
+            String query="INSERT INTO " + DatabaseName + " VALUES (?,?,?,?,?,?,?,?,?,?)";
+            //Then inserting it into the database
             try{
                 PreparedStatement pst=con.prepareStatement(query);
                 pst.setInt( 1, patient.getID());
@@ -64,8 +65,8 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
         con= DataBaseConnection.createConnectionToTeethTreatment();
         String query="SELECT * FROM " + DatabaseName; //getting everything
         System.out.println("Patient details: ");
-
-        System.out.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", //printing it in this formot
+////printing it in this format
+        System.out.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n",
                 "ID|", "FirstName","LastName|", "DateofBirth|", "DateofTreatment|", "Address|"
                 , "NeedsSpecialNeeds|", "TypeOfTreatment|", "PhoneNumber|", "Email|");
         System.out.println("------------------------------------------------------------------------------------------------------------------\n");
