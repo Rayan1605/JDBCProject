@@ -3,14 +3,17 @@ package DataBaseImplement;
 import Id.Id;
 import Patient.Patient;
 
+import java.sql.Connection;
+
 //So we are going to extend ID which mean we can use the public method from Id,
 //and we are going to implement the DatabaseInterface which mean we
 // have to use all the method
 //
 public class DatabaseCrudOperation extends Id implements DatabaseInterface {
+    Connection con;
     @Override
     public boolean createPatient(Patient patient, String DatabaseName) {
-        return false;
+
     }
 
     @Override
