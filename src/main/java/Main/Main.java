@@ -316,6 +316,8 @@ public class Main {
         if(input > 0 && input <= 7){
             return input;
         }
+        //If they don't enter a valid number
+        //We will use recursion to call the method again so they can enter it again
         else{
             System.out.println("Please enter a valid number | 1 | 2 | 3 | 4 | 5| 6 | 7 \n");
             return WhichOptiontoUpdate(updateOptions);
