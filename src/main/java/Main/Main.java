@@ -275,7 +275,8 @@ public class Main {
         //Checking if the ID exists in the database and the method to check is in
         // ID class
         if (!id.DoesIdExistInTable(DatabaseName, idToUpdate)){
-            //If the ID does not exist in the database, then it will ask to enter a valid ID
+            //If the ID does not exist in the database,
+            // then it will ask to enter a valid ID
 
             System.out.println("The ID you have entered does not exist in the database");
             System.out.println("Please enter a valid ID");
