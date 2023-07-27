@@ -6,6 +6,8 @@ import Patient.Patient;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Scanner;
 
 //So we are going to extend ID which mean we can use the public method from Id,
@@ -60,6 +62,39 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
 
     @Override
     public void showAllPatient(String DatabaseName) {
+        con= DatabaseConnections.createConnectionToTeethTreatment();
+        String query="SELECT * FROM " + DatabaseName; //getting everything
+        System.out.println("Patient details: ");
+
+        System.out.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", //printing it in this formot
+                "ID|", "FirstName","LastName|", "DateofBirth|", "DateofTreatment|", "Address|"
+                , "NeedsSpecialNeeds|", "TypeOfTreatment|", "PhoneNumber|", "Email|");
+        System.out.println("------------------------------------------------------------------------------------------------------------------\n");
+
+        try{
+            Statement stm2 =con.createStatement();
+            ResultSet result= stm2.executeQuery(query);
+            while(result.next()){
+                System.out.format("%d\t%s\t%s\t%s\t%s\t%s\t%b\t%s\t%d\t%s\n\n", //match the format
+                        result.getInt(1),
+                        result.getString(2),
+                        result.getString(3),
+                        result.getString(4),
+                        result.getString(5),
+                        result.getString(6),
+                        result.getBoolean(7),
+                        result.getString(8),
+                        result.getInt(9),
+                        result.getString(10));
+
+                System.out.println("------------------------------------------------------------------------------------------------------------------\n");
+
+            }
+            System.out.println("\n");
+
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
 
     }
 
