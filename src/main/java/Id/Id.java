@@ -18,7 +18,7 @@ public Id() {
 
 }
     //This will be used to get the Id
-    //But first we clear it so that we can get the latest bunch of  ids
+    //But first we clear it so that we can get the latest bunch of ids
     private void  GettingTheId()  {
         id.clear();
         String query="SELECT * FROM theid";
@@ -113,7 +113,8 @@ private void DeleteTheId(int a ){
         return false;
     }
 //This is to check if the id exist in the other table
-    private boolean IdExistInOtherTable(String table, int identity, String[] tables) throws SQLException {
+    private boolean IdExistInOtherTable(String table, int identity, String[] tables)
+            throws SQLException {
         // We check in a while loop to see if it has the same id if not then return false
 
         for (String table1 : tables) {
@@ -138,11 +139,8 @@ private void DeleteTheId(int a ){
                 PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
                 preparedStatement.setInt(1, id);
                 ResultSet ifId = preparedStatement.executeQuery();
-                if (ifId.next()) { //if there is an id then return true since the id is there
-                    return true;
-                } else {
-                    return false;
-                }
+                //if there is an id then return true since the id is there
+                return ifId.next();
             } catch (Exception e) {
                 e.printStackTrace();
                 return false;

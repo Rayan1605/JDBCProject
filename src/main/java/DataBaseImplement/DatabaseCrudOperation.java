@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.Objects;
 import java.util.Scanner;
 
-//So we are going to extend ID which mean we can use the public method from Id,
+//So we are going to extend ID which mean we can use the public method from ID,
 //and we are going to implement the DatabaseInterface which mean we
 // have to use all the method
 //
@@ -36,7 +36,8 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
             } while (choice != 1);
             //If the user does not exist, then we are going to create a new one
             con= DataBaseConnection.createConnectionToTeethTreatment();
-            String query="INSERT INTO " + DatabaseName + " VALUES (?,?,?,?,?,?,?,?,?,?)";//Then inserting it into the database
+            String query="INSERT INTO " + DatabaseName + " VALUES (?,?,?,?,?,?,?,?,?,?)";
+            //Then inserting it into the database
             try{
                 PreparedStatement pst=con.prepareStatement(query);
                 pst.setInt( 1, patient.getID());
@@ -64,8 +65,8 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
         con= DataBaseConnection.createConnectionToTeethTreatment();
         String query="SELECT * FROM " + DatabaseName; //getting everything
         System.out.println("Patient details: ");
-
-        System.out.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", //printing it in this formot
+////printing it in this format
+        System.out.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n",
                 "ID|", "FirstName","LastName|", "DateofBirth|", "DateofTreatment|", "Address|"
                 , "NeedsSpecialNeeds|", "TypeOfTreatment|", "PhoneNumber|", "Email|");
         System.out.println("------------------------------------------------------------------------------------------------------------------\n");
@@ -74,7 +75,8 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
             Statement stm2 =con.createStatement();
             ResultSet result= stm2.executeQuery(query);
             while(result.next()){
-                System.out.format("%d\t%s\t%s\t%s\t%s\t%s\t%b\t%s\t%d\t%s\n\n", //match the format
+                ////match the format
+                System.out.format("%d\t%s\t%s\t%s\t%s\t%s\t%b\t%s\t%d\t%s\n\n",
                         result.getInt(1),
                         result.getString(2),
                         result.getString(3),
@@ -99,8 +101,10 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
 
     @Override
     public void showPatientBasedonID(int id, String DatabaseName) {
+        //printing it in this format
         System.out.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n",
-                "ID|", "FirstName","LastName|", "DateofBirth|", "DateofTreatment|", "Address|"
+                "ID|", "FirstName","LastName|", "DateofBirth|", "DateofTreatment|",
+                "Address|"
                 , "NeedsSpecialNeeds|", "TypeOfTreatment|", "PhoneNumber|", "Email|");
         System.out.println("------------------------------------------------------------------------------------------------------------------\n");
         con = DataBaseConnection.createConnectionToTeethTreatment();
@@ -156,7 +160,8 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
                     ResultSet result = statement.executeQuery();
                     if (result.next()) {
                         Patient patient = new Patient();
-                        patient.setID(result.getInt(1)); //inserting it into the patient class
+                        //inserting it into the patient class
+                        patient.setID(result.getInt(1));
                         patient.setFirstname(result.getString(2));
                         patient.setLastName(result.getString(3));
                         patient.setDateOfBirthday(result.getString(4));
@@ -164,14 +169,17 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
                         patient.setNeedspecialNeeds(result.getBoolean(7));
                         patient.setPhoneNumber(result.getInt(9));
                         patient.setEmail(result.getString(10));
-                        return GetRemainingDetail(patient); //since it not in the same department
-                        //We can assume that the date and type of treatment is not the same,
+                        return GetRemainingDetail(patient); //since it not in the same
+                        // department
+                        //We can assume that the date and type of treatment is not the
+                        // same,
                         // so we will ask the user to enter it
 
                         //And we will save it to the patient class and return it
 
                     }else{
-                        System.out.println("The patient is not in the database"); //if the patient is not in the database
+                        // //if the patient is not in the database
+                        System.out.println("The patient is not in the database");
                     }
                 }catch (Exception e){
                     System.out.println("The patient is not in the database");
@@ -196,44 +204,41 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
     }
 
     @Override
-    public boolean updatePatient(int id, String itemtoUpdate, String newValue, int index, String DatabaseName) {
+    public boolean updatePatient(int id, String itemtoUpdate, String newValue,
+                                 int index, String DatabaseName) {
         int count;
         con = DataBaseConnection.createConnectionToTeethTreatment();
-        String query = "UPDATE " + DatabaseName + " SET " + itemtoUpdate + " = ? WHERE id = ?";
+        String query = "UPDATE " + DatabaseName + " SET " + itemtoUpdate +
+                " = ? WHERE id = ?";
         //So it will update the item to Update to the newValue where the id is the id
         PreparedStatement statement;
 
         try {
             statement = con.prepareStatement(query);
             if (Objects.equals(itemtoUpdate, "phonenumber")) {
-                for (Character c : newValue.toCharArray()) { // making sure the values are
+                //// making sure the values are
+                for (Character c : newValue.toCharArray()) {
                     //Number using ascii table
                     if (c < 48 || c > 57) {
                         System.out.println("Please enter a number");
                         return false;
                     }
                 }
-                statement.setInt(1, Integer.parseInt(newValue)); // so the first
+                // so the first
+                statement.setInt(1, Integer.parseInt(newValue));
                 // is the new value
                 statement.setInt(2, id);// second is the id
                 count =  statement.executeUpdate();
 
             } else if (Objects.equals(itemtoUpdate, "needspecialNeeds")) {
-                if (itemtoUpdate.equals("true") || itemtoUpdate.equals("false")) {
-                    //making sure it is true or false or else
-                    //it will close the application
+//If it is a boolean then we will convert it to boolean
                     statement.setBoolean(1, Boolean.parseBoolean(newValue));
                     //then convert to boolean
                     statement.setInt(2, id);
                     count= statement.executeUpdate();
-                } else {
-                    System.out.println("Please enter true or False");
-                    System.out.println("Application now closing");
-                    System.exit(0);
-                    return false;
-                }
+
             } else {
-                //If it is not a number or a boolean then it will be a string
+                //If it is not a number or a boolean, then it will be a string
                 statement.setString(1, newValue);
                 statement.setInt(2, id);
                 count =  statement.executeUpdate();
@@ -261,7 +266,7 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
                 System.out.println("Patient deleted!");
                 //We need to remove it from the list since it will be
                 // removed from the database,
-                //However, just like it explained in the id class
+                //However, just like it explained in the id class,
                 //we need to first see if this patient exists elsewhere
                 removeIdfromList(DatabaseName,id,TableNames);
             }
