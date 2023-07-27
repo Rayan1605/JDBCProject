@@ -231,5 +231,19 @@ public class Main {
 
     }
 
+    private static boolean CheckIfItBoolean(String nextBoolean) {
+        if(nextBoolean.equalsIgnoreCase("true")){
+            return true;
+        }
+        else if(nextBoolean.equalsIgnoreCase("false")){
+            return false;
+        }
+        else{
+            System.out.println("Please enter a valid boolean value -> true or false\n");
+            CheckIfItBoolean(nextBoolean);
+        }
+        return false;
+    }
+
 
 }
