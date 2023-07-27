@@ -4,9 +4,7 @@ import DataBaseImplement.DatabaseCrudOperation;
 import DataBaseImplement.DatabaseInterface;
 import Id.Id;
 
-import java.util.InputMismatchException;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     static Scanner myInput = new Scanner(System.in);
@@ -101,6 +99,7 @@ public class Main {
                 System.out.println("Please try again later\n");
                 System.exit(0);
             }
+
             System.out.println("Wrong password entered");
             System.out.println("Please try again -> You currently have \n" + (3 - count) + " more tries");
             DelayTimer(2000);
@@ -111,6 +110,47 @@ public class Main {
     }
 
     private static String WritePassword() {
+        System.out.println("Please enter the password you want to set\n");
+        String password = myInput.next();
+        if (CheckPasswordStrength(password)) {
+            return password;
+        } else {
+            System.out.println("Please enter a stronger password\n");
+            return WritePassword();
+        }
+    }
+
+    //To check if the password is strong enough
+    private static boolean CheckPasswordStrength(String Password) {
+        int count = 0;
+        List<String> specialChar = Arrays.asList("!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "+");
+        boolean[] checkList = new boolean[4];
+        for (Character a : Password.toCharArray()) {
+            if (Character.isUpperCase(a)) {
+                checkList[0] = true;
+            }
+            else if (Character.isLowerCase(a)) {
+                checkList[1] = true;
+            }
+            else if (Character.isDigit(a)) {
+                checkList[2] = true;
+            }
+            else {
+                for (String s : specialChar) {
+                    if (a.toString().equals(s)) {
+                        checkList[3] = true;
+                    }
+                }
+
+            }
+
+        }
+        for (boolean b : checkList) {
+            if (b) {
+                count++;
+            }
+        }
+        return count > 2;
     }
 
 
