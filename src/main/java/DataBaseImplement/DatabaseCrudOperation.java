@@ -4,10 +4,7 @@ import DbConnection.DataBaseConnection;
 import Id.Id;
 import Patient.Patient;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Scanner;
 
 //So we are going to extend ID which mean we can use the public method from Id,
@@ -101,7 +98,37 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
 
     @Override
     public void showPatientBasedonID(int id, String DatabaseName) {
+        System.out.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n",
+                "ID|", "FirstName","LastName|", "DateofBirth|", "DateofTreatment|", "Address|"
+                , "NeedsSpecialNeeds|", "TypeOfTreatment|", "PhoneNumber|", "Email|");
+        System.out.println("------------------------------------------------------------------------------------------------------------------\n");
+        con = DataBaseConnection.createConnectionToTeethTreatment();
+        String query = "SELECT * FROM " + DatabaseName + " where id = ?";
+        try {
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setInt(1, id); // so at the "?" it will be the id
+            ResultSet result = statement.executeQuery();
+            if (result.next()) {
+                System.out.format("%d\t%s\t%s\t%s\t%s\t%s\t%b\t%s\t%d\t%s\n\n",
+                        result.getInt(1),
+                        result.getString(2),
+                        result.getString(3),
+                        result.getString(4),
+                        result.getString(5),
+                        result.getString(6),
+                        result.getBoolean(7),
+                        result.getString(8),
+                        result.getInt(9),
+                        result.getString(10));
 
+                System.out.println("------------------------------------------------------------------------------------------------------------------\n");
+
+            } else {
+                System.out.println("The id is not there");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
