@@ -181,7 +181,7 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
         }
         return null;
     }
-
+///Just to get the remaining details by asking the user
     private Patient GetRemainingDetail(Patient patientClass) {
         System.out.println("Please enter the Patient Treatment Date\n");
         Scanner myinput = new Scanner(System.in);
