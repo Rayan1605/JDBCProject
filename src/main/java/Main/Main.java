@@ -43,6 +43,10 @@ public class Main {
 
     }
 
+    private static void showAllPatient() {
+        implement.showAllPatient(DatabaseName);
+        DelayTimer(2000);
+    }
 
 
     private static int CrudOption() {
