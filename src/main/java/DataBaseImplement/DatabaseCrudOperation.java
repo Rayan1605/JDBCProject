@@ -200,7 +200,7 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
         int count;
         con = DataBaseConnection.createConnectionToTeethTreatment();
         String query = "UPDATE " + DatabaseName + " SET " + itemtoUpdate + " = ? WHERE id = ?";
-        //So it will update the itemtoUpdate to the newValue where the id is the id
+        //So it will update the item to Update to the newValue where the id is the id
         PreparedStatement statement;
 
         try {
@@ -213,14 +213,17 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
                         return false;
                     }
                 }
-                statement.setInt(1, Integer.parseInt(newValue)); // so the first is the new value
+                statement.setInt(1, Integer.parseInt(newValue)); // so the first
+                // is the new value
                 statement.setInt(2, id);// second is the id
                 count =  statement.executeUpdate();
 
             } else if (Objects.equals(itemtoUpdate, "needspecialNeeds")) {
-                if (itemtoUpdate.equals("true") || itemtoUpdate.equals("false")) { //making sure it is true or false or else
+                if (itemtoUpdate.equals("true") || itemtoUpdate.equals("false")) {
+                    //making sure it is true or false or else
                     //it will close the application
-                    statement.setBoolean(1, Boolean.parseBoolean(newValue));//then convert to boolean
+                    statement.setBoolean(1, Boolean.parseBoolean(newValue));
+                    //then convert to boolean
                     statement.setInt(2, id);
                     count= statement.executeUpdate();
                 } else {
@@ -230,6 +233,7 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
                     return false;
                 }
             } else {
+                //If it is not a number or a boolean then it will be a string
                 statement.setString(1, newValue);
                 statement.setInt(2, id);
                 count =  statement.executeUpdate();
@@ -247,7 +251,28 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
 
     @Override
     public void deletePatient(int id, String DatabaseName, String[] TableNames) {
+        con = DataBaseConnection.createConnectionToTeethTreatment();
+        String query = "DELETE FROM  " + DatabaseName + " where id = ?";
+        try{
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setInt( 1, id);
+            int cnt = pst.executeUpdate();
+            if (cnt!=0) {
+                System.out.println("Patient deleted!");
+                //We need to remove it from the list since it will be
+                // removed from the database,
+                //However, just like it explained in the id class
+                //we need to first see if this patient exists elsewhere
+                removeIdfromList(DatabaseName,id,TableNames);
+            }
+            else {
+                System.out.println("Patient not found!");//If it can't be found
+                // then we assume it does not exist
+            }
 
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override
