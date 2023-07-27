@@ -219,19 +219,12 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
                 count =  statement.executeUpdate();
 
             } else if (Objects.equals(itemtoUpdate, "needspecialNeeds")) {
-                if (itemtoUpdate.equals("true") || itemtoUpdate.equals("false")) {
-                    //making sure it is true or false or else
-                    //it will close the application
+//If it is a boolean then we will convert it to boolean
                     statement.setBoolean(1, Boolean.parseBoolean(newValue));
                     //then convert to boolean
                     statement.setInt(2, id);
                     count= statement.executeUpdate();
-                } else {
-                    System.out.println("Please enter true or False");
-                    System.out.println("Application now closing");
-                    System.exit(0);
-                    return false;
-                }
+
             } else {
                 //If it is not a number or a boolean then it will be a string
                 statement.setString(1, newValue);
