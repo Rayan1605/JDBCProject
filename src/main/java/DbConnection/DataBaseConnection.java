@@ -26,7 +26,7 @@ public class DataBaseConnection {
 
     public static Connection CreateConnectionTouserdetails() {
         try {
-            Class.forName("com.mysql.jdbc.Driver"); // getting the driver
+            Class.forName("com.mysql.cj.jdbc.Driver"); // getting the driver
             // creating the connection with the database
             connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/userdetails?useSSL=false"
