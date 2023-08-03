@@ -24,7 +24,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestingConnection {
 
-
     @Test
     @DisplayName("Test to check if the connection is created to Teeth department")
     public void testCreateConnectiontoTeethTreatment() throws SQLException {
