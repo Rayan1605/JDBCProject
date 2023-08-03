@@ -34,6 +34,7 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
                     return false;
                 }
             } while (choice != 1);
+        }
             //If the user does not exist, then we are going to create a new one
             con= DataBaseConnection.createConnectionToTeethTreatment();
             String query="INSERT INTO " + DatabaseName + " VALUES (?,?,?,?,?,?,?,?,?,?)";
@@ -51,14 +52,16 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
                 pst.setInt( 9, patient.getPhoneNumber());
                 pst.setString( 10, patient.getEmail());
                 int cnt = pst.executeUpdate();
-                return cnt != 0;
-
+                if (cnt != 0) {
+                    System.out.println("Patient has been created");
+                    return true;
+                }
+                 System.out.println("Patient has not been created");
+return false;
             }catch(Exception ex){
                 return false;
             }
         }
-        return false;
-    }
 //This method is used to show all the patient
     @Override
     public void showAllPatient(String DatabaseName) {
