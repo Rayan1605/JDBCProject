@@ -155,6 +155,7 @@ public class Main {
             //If typed wrong 3 more time then the application closes
             if (count ==3) {
                 System.out.println("You have entered the wrong password 3 times");
+                System.out.println("The application will now close");
                 System.out.println("Please try again later\n");
                 System.exit(0);
             }
