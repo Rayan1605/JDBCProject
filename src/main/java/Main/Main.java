@@ -92,7 +92,7 @@ public class Main {
         System.out.println("Enter Here -> ");
         DelayTimer(600);
         int CrudOption = myInput.nextInt();
-        if (CrudOption > 0 && CrudOption <= 7) {
+        if (CrudOption > 0 && CrudOption <= 8) {
             return CrudOption;
         } else {
             System.out.println("Please enter a valid number | 1 | 2 | 3 | 4 | 5 | 6| 7 \n");
