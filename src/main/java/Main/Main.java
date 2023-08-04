@@ -226,25 +226,27 @@ public class Main {
         Patient pat = new Patient();
         System.out.println("Enter ID: ");
         pat.setID(myInput.nextInt());
+        myInput.nextLine(); // Consume newline
         System.out.println("Enter First Name: ");
-        pat.setFirstname( myInput.next());
+        pat.setFirstname( myInput.nextLine());
         System.out.println("Enter Last Name: ");
-        pat.setLastName( myInput.next());
+        pat.setLastName( myInput.nextLine());
         System.out.println("Enter email");
-        pat.setEmail( myInput.next());
+        pat.setEmail( myInput.nextLine());
         System.out.println("Enter Phone Number: ");
         pat.setPhoneNumber( myInput.nextInt());
+        myInput.nextLine(); // Consume newline
         System.out.println("Enter DOB: ");
-        pat.setDateOfBirthday( myInput.next());
+        pat.setDateOfBirthday( myInput.nextLine());
         System.out.println("Enter Treatment Date: ");
-        pat.setDateOfTreatment( myInput.next());
+        pat.setDateOfTreatment( myInput.nextLine());
         System.out.println("Enter Address: ");
         String address = myInput.nextLine();
         pat.setAddress(address);
         System.out.println("Is Special Needs?: true or false ");
         pat.setNeedspecialNeeds(CheckIfItBoolean(myInput.nextLine()));
         System.out.println("Enter Treatment Type: ");
-        pat.setTypeOfTreatment( myInput.next());
+        pat.setTypeOfTreatment( myInput.nextLine());
 
         boolean check = implement.createPatient(pat, DatabaseName);
         if (check){
