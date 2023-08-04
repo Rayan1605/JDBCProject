@@ -211,8 +211,7 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
                                  int index, String DatabaseName) {
         int count;
         con = DataBaseConnection.createConnectionToTeethTreatment();
-        String query = "UPDATE " + DatabaseName + " SET " + itemtoUpdate +
-                " = ? WHERE id = ?";
+        String query =  "UPDATE " + DatabaseName + " SET " + itemtoUpdate + " = ? WHERE id = ?";
         //So it will update the item to Update to the newValue where the id is the id
         PreparedStatement statement;
 

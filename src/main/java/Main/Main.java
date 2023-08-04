@@ -302,9 +302,10 @@ public class Main {
                         myInput.next(), 5, DatabaseName);
             }
             case 2 -> {
-                System.out.println("Enter New Address: ");
+                System.out.println("Enter New Address: \n");
+                String address = myInput.next();
                 implement.updatePatient(idToUpdate, updateOptions[updateOption],
-                        myInput.next(), 6, DatabaseName);
+                      address , 6, DatabaseName);
             }
             case 3 -> {
                 System.out.println("Enter  if you require NeedSpecialNeed: true or false: ");
