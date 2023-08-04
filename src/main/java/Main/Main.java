@@ -153,7 +153,7 @@ public class Main {
 
             //If typed wrong 3 more time then the application closes
             if (count ==3) {
-                System.out.println("You have entered the wrong password 3 times");
+                System.out.println("You have entered the wrong password 4 times");
                 System.out.println("The application will now close");
                 System.out.println("Please try again later\n");
                 System.exit(0);
@@ -239,9 +239,10 @@ public class Main {
         System.out.println("Enter Treatment Date: ");
         pat.setDateOfTreatment( myInput.next());
         System.out.println("Enter Address: ");
-        pat.setAddress(myInput.next());
+        String address = myInput.nextLine();
+        pat.setAddress(address);
         System.out.println("Is Special Needs?: true or false ");
-        pat.setNeedspecialNeeds(CheckIfItBoolean(myInput.next()));
+        pat.setNeedspecialNeeds(CheckIfItBoolean(myInput.nextLine()));
         System.out.println("Enter Treatment Type: ");
         pat.setTypeOfTreatment( myInput.next());
 
@@ -314,8 +315,9 @@ public class Main {
             }
             case 4 -> {
                 System.out.println("Enter  the TypeOfTreatment: ");
+                String TypeOfTreatment = myInput.next();
                 implement.updatePatient(idToUpdate, updateOptions[updateOption],
-                        myInput.next(), 8, DatabaseName);
+                        TypeOfTreatment , 6, DatabaseName);
             }
 
             case 5-> {
