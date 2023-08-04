@@ -286,7 +286,7 @@ public class Main {
             updatePatient();
         }
         String[] updateOptions = {"DateofBirth", "DateofTreatment"
-                , "Address", "NeedSpecialNeeds", "TypeOfTreatment,", "PhoneNumber","Email", };
+                , "Address", "NeedSpecialNeeds", "TypeOfTreatment", "PhoneNumber","Email", };
         int updateOption = WhichOptiontoUpdate(updateOptions) - 1;
         //Once we have the option we want to update,
         //We will send it to the updatePatient method
