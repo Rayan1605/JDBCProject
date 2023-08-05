@@ -15,8 +15,8 @@ import java.util.Scanner;
 public class DatabaseCrudOperation extends Id implements DatabaseInterface {
     Connection con;
     @Override
-    public boolean createPatient(Patient patient, String DatabaseName) {
-        if (!addId(patient.getID())) { // checking if we can add the id if
+    public boolean createPatient(Patient patient, String DatabaseName,boolean check) {
+        if (!addId(patient.getID()) && (!check)) { // checking if we can add the id if
             // another id exist, ask them if they want to import it
             int choice = 0;
             do {
@@ -246,7 +246,7 @@ public class DatabaseCrudOperation extends Id implements DatabaseInterface {
                 count =  statement.executeUpdate();
             }
             if (count > 0) {
-                System.out.println("Employee updated successfully");
+                System.out.println("Patient updated successfully");
                 return true;
             }
 

@@ -46,7 +46,7 @@ public class Main {
     private static void importPatient() {
         System.out.println("What the id of the person you wish to import");
         Patient patient = implement.ImportPatient(myInput.nextInt());
-        implement.createPatient(patient,DatabaseName);
+        implement.createPatient(patient,DatabaseName,true);
     }
 
     private static void deletePatient() {
@@ -248,15 +248,13 @@ public class Main {
         System.out.println("Enter Treatment Type: ");
         pat.setTypeOfTreatment( myInput.nextLine());
 
-        boolean check = implement.createPatient(pat, DatabaseName);
+        boolean check = implement.createPatient(pat, DatabaseName,false);
         if (check){
             System.out.println("It been added Successfully\n");
         }
         else {
             System.out.println("Therefore it has not been added Successfully\n");
         }
-
-
     }
 
     private static boolean CheckIfItBoolean(String nextBoolean) {
@@ -268,7 +266,7 @@ public class Main {
         }
         else{
             System.out.println("Please enter a valid boolean value -> true or false\n");
-            CheckIfItBoolean(nextBoolean);
+            CheckIfItBoolean(myInput.nextLine());
         }
         return false;
     }
@@ -305,8 +303,9 @@ public class Main {
                         myInput.next(), 5, DatabaseName);
             }
             case 2 -> {
+                myInput.nextLine();// Consume newline
                 System.out.println("Enter New Address: \n");
-                String address = myInput.next();
+                String address = myInput.nextLine();
                 implement.updatePatient(idToUpdate, updateOptions[updateOption],
                       address , 6, DatabaseName);
             }
@@ -334,6 +333,7 @@ public class Main {
             }
             default -> System.out.println("ERROR!");
         }
+        myInput.nextLine(); // Consume newline
 
     }
 
