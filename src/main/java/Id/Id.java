@@ -47,7 +47,7 @@ private void DeleteTheId(int a ){
     }
 }
 //This will be used to enter the id into the database
-    public void SettingTheId(int a ){
+    private void SettingTheId(int a ){
         String query="INSERT INTO theid VALUES (?)";
         try {
             PreparedStatement statement2 = con.prepareStatement(query);
