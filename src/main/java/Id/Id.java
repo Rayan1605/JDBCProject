@@ -116,7 +116,6 @@ private void DeleteTheId(int a ){
     private boolean IdExistInOtherTable(String table, int identity, String[] tables)
             throws SQLException {
         // We check in a while loop to see if it has the same id if not then return false
-
         for (String table1 : tables) {
             if (!table1.equals(table)) {
                 String sqlQuery = "SELECT Id FROM " + table1 + " WHERE Id = ?";
@@ -127,7 +126,6 @@ private void DeleteTheId(int a ){
                     return true;
                 }
             }
-
         }
         return false;  // If we reach this point,
         // it means the ID was not found in any table
