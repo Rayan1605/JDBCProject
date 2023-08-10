@@ -105,7 +105,7 @@ private void DeleteTheId(int a ){
             return false;
         }
         // then we can't
-        if(canweRemove){ // if we can then remove again
+        if(!canweRemove){ // if we can then remove again
             DeleteTheId(identity);
             GettingTheId();
             return true;
