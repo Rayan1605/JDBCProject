@@ -8,6 +8,7 @@ import Patient.Patient;
 import java.util.*;
 
 public class Main {
+    //It all static because we want to use it in the whole class
     static Scanner myInput = new Scanner(System.in);
     static String[] tables = {"orthodontistclinic", "dentaldepartment"};
     static DatabaseInterface implement = new DatabaseCrudOperation();
