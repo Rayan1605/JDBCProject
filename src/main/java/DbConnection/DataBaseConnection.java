@@ -12,7 +12,7 @@ public class DataBaseConnection {
             Class.forName("com.mysql.cj.jdbc.Driver"); // getting the driver
             // creating the connection with the database
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/teethtreatment?useSSL=false"
+                    "jdbc:mysql://localhost:3306/teethtreatment?useSSL=true"
                     ,"root"
                     ,"Password");
 
@@ -29,7 +29,7 @@ public class DataBaseConnection {
             Class.forName("com.mysql.cj.jdbc.Driver"); // getting the driver
             // creating the connection with the database
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/userdetails?useSSL=false"
+                    "jdbc:mysql://localhost:3306/userdetails?useSSL=true"
                     , "root"
                     , "Password");
 
